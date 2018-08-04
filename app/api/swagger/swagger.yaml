@@ -1,0 +1,55 @@
+swagger: '2.0'
+
+info:
+  version: '1.0'
+  title: Dave
+  description: ''
+  license:
+    name: MIT
+    url: https://github.com/chrisrcoles/dave-api
+host: localhost:8081
+basePath: /api/v1/
+schemes:
+- http
+- https
+consumes:
+- application/json
+produces:
+- application/json
+
+paths:
+  /health:
+    get:
+      description: Health Endpoint
+      summary: Get Health Status
+      tags:
+      - health
+      operationId: index_getHealth
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Health'
+definitions:
+  Health:
+    title: Health
+    type: object
+    properties:
+      uptime:
+        description: ''
+        type: number
+        format: double
+      env:
+        description: ''
+        type: string
+      rand:
+        description: ''
+        type: number
+        format: double
+    required:
+    - uptime
+    - env
+    - rand
