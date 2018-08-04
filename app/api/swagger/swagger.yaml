@@ -33,6 +33,52 @@ paths:
           description: ''
           schema:
             $ref: '#/definitions/Health'
+  /sightings:
+    post:
+      description: Create a bear sighting
+      summary: Bear Sighting Create
+      tags:
+      - bearsightings
+      operationId: index_createBearSighting
+      parameters:
+      - $ref: "#/parameters/BearSightingCreateBody"
+      produces:
+      - application/json
+      responses:
+        201:
+          $ref: '#/responses/BearSighting'
+  /sightings/{id}:
+    get:
+      description: Get a bear sighting by id
+      summary: Get bear sighting
+      tags:
+      - bearsightings
+      operationId: index_getBearSighting
+      parameters:
+      - $ref: '#/parameters/Id'
+      produces:
+      - application/json
+      responses:
+        200:
+          description: 'Resource found'
+          schema:
+            $ref: '#/responses/BearSighting'
+        404:
+          $ref: '#/responses/FoundErrors'
+parameters:
+# path
+  Id:
+    name: id
+    in: path
+    required: true
+    type: string
+    description: Resource ID
+  BearSightingCreateBody:
+    name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/BearSighting'
 definitions:
   Health:
     title: Health
@@ -53,3 +99,75 @@ definitions:
     - uptime
     - env
     - rand
+  BearSighting:
+    title: Bear Sighting
+    type: object
+    description: Request body for user signup
+    properties:
+      bear_type:
+        description: Type of bear
+        type: string
+      notes:
+        description: Notes on bear sighting
+        type: string
+      zipcode:
+        description: Zipcode bear sighting occurred in
+        type: string
+      num_bears:
+        description: Number of bears seen at sighting
+        type: integer
+      start_date:
+        description: Start date of bear sighting
+        type: string
+      end_date:
+        description: End date of bear sighting
+        type: string
+      created_at:
+        description: Time of creation
+        type: string
+      updated_at:
+        description: Time of last update
+        type: string
+    required:
+      - bear_type
+      - notes
+      - zipcode
+      - num_bears
+  Error:
+    title: Error
+    description: Expected error response object
+    type: object
+    properties:
+      id:
+        description: Unique ID for this instance of the error
+        type: string
+      message:
+        description: Common error type
+        type: string
+      description:
+        description: Detailed explanation of the error
+        type: string
+      meta:
+        description: Optional meta data for the error
+        type: object
+  ErrorArray:
+    title: Errors
+    description: Array of error response objects
+    type: array
+    items:
+      $ref: '#/definitions/Error'
+
+responses:
+   FoundErrors:
+       description: Resource could not be found
+       schema:
+         type: object
+         properties:
+           errors:
+             $ref: '#/definitions/ErrorArray'
+         required:
+         - errors
+   BearSighting:
+       description: Resource could not be found
+       schema:
+         $ref: '#/definitions/BearSighting'

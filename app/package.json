@@ -4,8 +4,10 @@
   "description": "Dave API",
   "main": "server.js",
   "scripts": {
+    "test": "node node_modules/jest/bin/jest.js --coverage",
     "start": "node server.js",
-    "test": "node node_modules/jest/bin/jest.js --coverage"
+    "db:migrate": "node node_modules/.bin/sequelize db:migrate --debug",
+    "db:migrate:undo": "node node_modules/.bin/sequelize db:migrate:undo --debug"
   },
   "repository": {
     "type": "git",

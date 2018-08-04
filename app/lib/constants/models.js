@@ -1,9 +1,9 @@
 exports.MODELS = {
 	// TODO make foreign keys + table names constants
 
-	CAMPAIGN: {
-		TABLE: 'models',
-		MODEL: 'Model'
+	BEARSIGHTING: {
+		TABLE: 'bearsightings',
+		MODEL: 'BearSighting'
 	}
 
 };
