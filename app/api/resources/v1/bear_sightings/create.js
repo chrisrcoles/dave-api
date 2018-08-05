@@ -3,7 +3,6 @@ const {
 } = require('../../../../db/models/index');
 
 module.exports = (req, res) => {
-	console.log('hi')
 	const payload = req.body;
 
 	BearSighting.create(payload)

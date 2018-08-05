@@ -65,6 +65,28 @@ paths:
             $ref: '#/responses/BearSighting'
         404:
           $ref: '#/responses/FoundErrors'
+  /sightings/search:
+    get:
+      description: Get a bear sighting by searching
+      summary: Get bear sighting with query params
+      tags:
+      - bearsightings
+      operationId: index_searchBearSightings
+      parameters:
+      - $ref: '#/parameters/QueryStartDate'
+      - $ref: '#/parameters/QueryEndDate'
+      - $ref: '#/parameters/QueryBearType'
+      - $ref: '#/parameters/QueryZipCode'
+      - $ref: '#/parameters/QuerySort'
+      produces:
+      - application/json
+      responses:
+        200:
+          description: 'Resource found'
+          schema:
+            $ref: '#/responses/BearSighting'
+        404:
+          $ref: '#/responses/FoundErrors'
 parameters:
 # path
   Id:
@@ -79,6 +101,36 @@ parameters:
     required: true
     schema:
       $ref: '#/definitions/BearSighting'
+  QueryStartDate:
+    name: start_date
+    in: query
+    required: false
+    type: string
+    description: Query for bear sighting start date
+  QueryEndDate:
+    name: end_date
+    in: query
+    required: false
+    type: string
+    description: Query for bear sighting end date
+  QueryBearType:
+    name: bear_type
+    in: query
+    required: false
+    type: string
+    description: Query for bear type
+  QueryZipCode:
+    name: zipcode
+    in: query
+    required: false
+    type: string
+    description: Query for zip code
+  QuerySort:
+    name: sort
+    in: query
+    required: false
+    type: string
+    description: Query for sort
 definitions:
   Health:
     title: Health
@@ -168,6 +220,10 @@ responses:
          required:
          - errors
    BearSighting:
-       description: Resource could not be found
+       description: Return a single bear sighting
+       schema:
+         $ref: '#/definitions/BearSighting'
+   BearSightings:
+       description: Return an array of bear sightings
        schema:
          $ref: '#/definitions/BearSighting'

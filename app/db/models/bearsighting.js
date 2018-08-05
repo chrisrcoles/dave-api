@@ -27,18 +27,17 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		start_date: {
 			type: DataTypes.DATE,
+			defaultValue: DataTypes.NOW,
 		},
 		end_date: {
 			type: DataTypes.DATE,
+			defaultValue: DataTypes.NOW,
 		}
 	}, {
 		tableName: MODELS.BEARSIGHTING.TABLE,
 		timestamps: true
 	});
 
-	BearSighting.associate = (models) => {
-
-
-	};
+	BearSighting.associate = (models) => {};
 	return BearSighting;
 };
