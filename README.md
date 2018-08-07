@@ -100,6 +100,6 @@ Within Postgres, all of the relevant information is stored in the `bearsightings
 
 # Images
 
-![Add](https://github.com/chrisrcoles/dave-api/blob/master/images/add.png=250x250)
-![List](https://github.com/chrisrcoles/dave-api/blob/master/images/list.png=250x250)
-![Search](https://github.com/chrisrcoles/dave-api/blob/master/images/search.png=250x250)
+![Add](https://github.com/chrisrcoles/dave-api/blob/master/images/add.png)
+![List](https://github.com/chrisrcoles/dave-api/blob/master/images/list.png)
+![Search](https://github.com/chrisrcoles/dave-api/blob/master/images/search.png)
